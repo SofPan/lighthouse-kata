@@ -9,21 +9,31 @@ let prompt = require("prompt-sync")();
 
 const randomNum = Math.floor(Math.random() * 10).toString();
 let answer = prompt("Guess a number: ");
+let tries = [];
 
 const numberGuesser = (num) => {
-  if (num > randomNum){
-    console.log("Too high!")
-    answer =  prompt("Guess a number: ");
-    numberGuesser(answer);
-  }
-  if (num < randomNum){
-    console.log("Too low!");
-    answer =  prompt("Guess a number: ");
-    numberGuesser(answer);
-  }
-  if (num === randomNum){
-    console.log("You got it!");
-  }
+  // check if answer is valid
+  // if (num){
+  //   console.log("error, you must enter a number");
+  // } else {
+    // conditionally check if number matches
+    if (num > randomNum){
+      console.log("Too high!")
+    }
+    if (num < randomNum){
+      console.log("Too low!");
+    }
+    if (num === randomNum){
+      console.log("You got it! You took " + (tries.length + 1) + " tries.");
+      return;
+    }
+    // check if number has already been tried
+    if (!tries.includes(answer)){
+      tries.push(answer);
+    }
+  // }
+  answer =  prompt("Guess a number: ");
+  numberGuesser(answer);
 }
 
 numberGuesser(answer);
