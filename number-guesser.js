@@ -1,21 +1,16 @@
-/*
-  - user has to guess a number
-  - program tells user if their number is too low or too high
-  - when guessed, print number of tries
-  - inputting the same number should only count as one try
-  - if the user inputs something that is not a number, print an error and do not count as a try
-*/ 
 let prompt = require("prompt-sync")();
 
+// winning condition
 const randomNum = Math.floor(Math.random() * 10).toString();
+// user input
 let answer = prompt("Guess a number: ");
 let tries = [];
 
 const numberGuesser = (num) => {
   // check if answer is valid
-  // if (num){
-  //   console.log("error, you must enter a number");
-  // } else {
+  if (isNaN(parseInt(num))){
+    console.log("error, you must enter a number");
+  } else {
     // conditionally check if number matches
     if (num > randomNum){
       console.log("Too high!")
@@ -31,7 +26,7 @@ const numberGuesser = (num) => {
     if (!tries.includes(answer)){
       tries.push(answer);
     }
-  // }
+  }
   answer =  prompt("Guess a number: ");
   numberGuesser(answer);
 }
