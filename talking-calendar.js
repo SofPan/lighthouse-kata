@@ -1,4 +1,4 @@
-const talkingCalendar = function (date) {
+const talkingCalendar = (date) => {
   // use a deconstructor to define the split dates
   let [year, month, day] = date.split('/');
 
@@ -7,16 +7,16 @@ const talkingCalendar = function (date) {
   month = calendarMonths[month - 1];
 
   // depending on the day's last digit, append the correct suffix
-  if (day.charAt(1) === "2"){
+  if (day.charAt(1) === "2") {
     day = day + 'nd';
-  } else if (day.charAt(1) === "3"){
+  } else if (day.charAt(1) === "3") {
     day = day + 'rd';
   } else {
     day = day + 'th';
   }
 
   // If the day starts with 0, drop it
-  if (day.charAt(0) === "0"){
+  if (day.charAt(0) === "0") {
     day = day.replace("0", "");
   }
 

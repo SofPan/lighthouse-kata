@@ -1,21 +1,21 @@
-const whereCanIPark = function (spots, vehicle) {
+const whereCanIPark = (spots, vehicle) => {
   // use first letter of the vehicle to compare size
   const size = vehicle.charAt(0).toUpperCase();
 
   // iterate over the rows
-  for (let i = 0; i < spots.length; i++){
+  for (let i = 0; i < spots.length; i++) {
     // iterate over the columns
-    for (let j = 0; j < spots[i].length; j++){
+    for (let j = 0; j < spots[i].length; j++) {
       /*
         if size equals current i/j spot
           return index of i and j as an array
-      */ 
-      if (size === spots[i][j]){
+      */
+      if (size === spots[i][j]) {
         return [i, j];
       }
     }
   }
-  
+
   // if nothing returns from the loops, return false.
   return false;
 };
@@ -54,4 +54,4 @@ console.log(whereCanIPark(
     ['S', 'r', 'S', 'M', 'm', 'S']
   ],
   'motorcycle'
-))
+));

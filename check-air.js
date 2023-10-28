@@ -1,16 +1,16 @@
-const checkAir = function (samples, threshold) {
+const checkAir = (samples, threshold) => {
   // add up number of dirty air days
   let dirtCount = 0;
 
-  for (const sample of samples){
-    if (sample === 'dirty'){
+  for (const sample of samples) {
+    if (sample === 'dirty') {
       dirtCount++;
     }
   }
   // determine percentage of dirty air days out of all days
-  let percentage = dirtCount/samples.length;
+  let percentage = dirtCount / samples.length;
   // return Clean or Polluted depending on dirty air percent
-  if (percentage >= threshold){
+  if (percentage >= threshold) {
     return 'Polluted';
   }
   return 'Clean';
@@ -29,4 +29,4 @@ console.log(checkAir(
 console.log(checkAir(
   ['clean', 'dirty', 'clean', 'dirty', 'clean', 'dirty', 'clean'],
   0.9
-))
+));

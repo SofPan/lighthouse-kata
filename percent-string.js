@@ -1,7 +1,7 @@
-const urlEncode = function(text) {
+const urlEncode = (text) => {
   let newText = text.split("");
-  for(let i = 0; i < newText.length; i++){
-    if (newText[i] === " "){
+  for (let i = 0; i < newText.length; i++) {
+    if (newText[i] === " ") {
       newText[i] = "%20";
     }
   }

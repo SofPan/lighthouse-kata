@@ -1,9 +1,9 @@
-const urlDecode = function (text) {
+const urlDecode = (text) => {
   const parts = text.split("&");
   let output = {};
 
-  for (let pair of parts){
-    if (pair.includes("%20")){
+  for (let pair of parts) {
+    if (pair.includes("%20")) {
       pair = pair.replaceAll("%20", " ");
     }
 

@@ -1,10 +1,10 @@
-const instructorWithLongestName = function (instructors) {
+const instructorWithLongestName = (instructors) => {
   // Set an object with the same key-values to compare against
-  let longName = {name: "", course: ""};
+  let longName = { name: "", course: "" };
 
   // check each instructor's name length against the placeholder
-  for (const inst of instructors){
-    if (inst.name.length > longName.name.length){
+  for (const inst of instructors) {
+    if (inst.name.length > longName.name.length) {
       longName = inst;
     }
   }

@@ -1,9 +1,9 @@
-const organizeInstructors = function (instructors) {
+const organizeInstructors = (instructors) => {
   let output = {};
 
-  for (const member of instructors){
+  for (const member of instructors) {
     // If the output object does not include the course already, create an array
-    if (!output[member.course]){
+    if (!output[member.course]) {
       output[member.course] = [];
     }
     // push the instructor's name to the relevant course in output

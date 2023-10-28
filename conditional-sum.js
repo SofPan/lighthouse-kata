@@ -1,12 +1,12 @@
-const conditionalSum = function(values, condition) {
+const conditionalSum = (values, condition) => {
   let total = 0;
-  for (let i = 0; i < values.length; i++){
-    if (condition === "even"){
-      if (values[i] % 2 === 0){
+  for (let i = 0; i < values.length; i++) {
+    if (condition === "even") {
+      if (values[i] % 2 === 0) {
         total = total + values[i];
       }
     } else {
-      if (values[i] % 2 !== 0){
+      if (values[i] % 2 !== 0) {
         total = total + values[i];
       }
     }

@@ -1,12 +1,12 @@
-const chooseRecipe = function (bakeryA, bakeryB, recipes) {
+const chooseRecipe = (bakeryA, bakeryB, recipes) => {
   // toggle checks for ingredients at both bakeries.
   let bakeryAHas = false;
   let bakeryBHas = false;
-  for (const recipe of recipes){
-    for (const ing of recipe.ingredients){
-      if (bakeryA.includes(ing)){
+  for (const recipe of recipes) {
+    for (const ingredient of recipe.ingredients) {
+      if (bakeryA.includes(ingredient)) {
         bakeryAHas = true;
-      } else if (bakeryB.includes(ing)){
+      } else if (bakeryB.includes(ingredient)) {
         bakeryBHas = true;
       } else {
         // if neither bakery has the ingredient reset both to false.
@@ -14,13 +14,12 @@ const chooseRecipe = function (bakeryA, bakeryB, recipes) {
         bakeryBHas = false;
       }
       // If both bakeries have an ingredient, return the recipe name;
-      if (bakeryAHas && bakeryBHas){
+      if (bakeryAHas && bakeryBHas) {
         return recipe.name;
       }
     }
   }
-
-  return recipeName;
+  return;
 };
 
 let bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];

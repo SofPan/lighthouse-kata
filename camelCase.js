@@ -1,6 +1,6 @@
-const camelCase = function (input) {
+const camelCase = (input) => {
   const words = input.split(' ');
-  for (let i = 1; i < words.length; i++){
+  for (let i = 1; i < words.length; i++) {
     words[i] = words[i].replace(words[i][0], words[i][0].toUpperCase());
   }
 
