@@ -1,0 +1,15 @@
+{
+  "name": "luhn-check",
+  "version": "1.0.0",
+  "description": "",
+  "main": "check.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^9.2.2"
+  }
+}
