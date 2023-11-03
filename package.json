@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "prompt-sync": "^4.1.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^9.2.2"
   }
 }
