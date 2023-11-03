@@ -24,9 +24,16 @@ const sortPrices = (arr) => {
 const maxProfit = (prices) => {
   checkIfIsArray(prices, "maxProfit");
   let max = -1;
-  // for (let i = 0; i < prices.length; i++) {
-
-  // }
+  for (let i = 0; i < prices.length; i++) {
+    // sort from the next index to the end
+    const sortRemaining = sortPrices(prices.slice(i + 1));
+    // subtract the current number from the largest available
+    const diff = sortRemaining[sortRemaining.length - 1] - prices[i];
+    // if the difference is greater than current max, redefine max
+    if (diff > max) {
+      max = diff;
+    }
+  }
   return max;
 };
 console.log(maxProfit([45, 24, 35, 31, 40, 38, 11]));
