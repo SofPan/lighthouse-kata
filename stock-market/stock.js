@@ -8,8 +8,11 @@
  * @returns maximum profit or -1 if no profit is possible
  */
 
-const maxprofit = (prices) => {
+const maxProfit = (prices) => {
+  if (!Array.isArray(prices)) {
+    throw new Error("maxProfit requires an array");
+  }
   // code here
 };
-console.log(maxprofit([45, 24, 35, 31, 40, 38, 11]));
-module.exports = maxprofit;
+console.log(maxProfit([45, 24, 35, 31, 40, 38, 11]));
+module.exports = maxProfit;
