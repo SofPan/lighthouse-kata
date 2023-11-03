@@ -41,7 +41,7 @@ describe("maxProfit", () => {
     assert.strictEqual(actual, expected);
   });
   it("should throw an error when anything other than an array is passed in", () => {
-    const expected = "stock.maxProfit requires an array";
+    const expected = "maxProfit requires an array";
     const actual = () => stock.maxProfit(123);
     assert.throws(actual, Error, expected);
   });
