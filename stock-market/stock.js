@@ -21,14 +21,18 @@ const sortPrices = (arr) => {
   });
 };
 
+const findDiff = (n1, n2) => {
+  return n2 - n1;
+};
+
 const maxProfit = (prices) => {
   checkIfIsArray(prices, "maxProfit");
   let max = -1;
   for (let i = 0; i < prices.length; i++) {
-    // sort from the next index to the end
-    const sortRemaining = sortPrices(prices.slice(i + 1));
+    // sort from the next index to the end (to the right)
+    const sortRight = sortPrices(prices.slice(i + 1));
     // subtract the current number from the largest available
-    const diff = sortRemaining[sortRemaining.length - 1] - prices[i];
+    const diff = findDiff(sortRight[sortRight.length - 1], prices[i]);
     // if the difference is greater than current max, redefine max
     if (diff > max) {
       max = diff;
