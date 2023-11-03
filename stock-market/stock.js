@@ -7,16 +7,21 @@
  * @function maxprofit takes in an array of prices (numbers)
  * @returns maximum profit or -1 if no profit is possible
  */
+const checkIfIsArray = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("maxProfit requires an array");
+  }
+}
+
 const sortPrices = (arr) => {
+  checkIfIsArray(arr);
   return arr.sort((a, b) => {
     return a - b;
   });
 };
 
 const maxProfit = (prices) => {
-  if (!Array.isArray(prices)) {
-    throw new Error("maxProfit requires an array");
-  }
+  checkIfIsArray(prices);
   let max = -1;
   // for (let i = 0; i < prices.length; i++) {
 
