@@ -22,7 +22,7 @@ const sortPrices = (arr) => {
 };
 
 const findDiff = (n1, n2) => {
-  return n2 - n1;
+  return n1 - n2;
 };
 
 const maxProfit = (prices) => {
@@ -41,4 +41,4 @@ const maxProfit = (prices) => {
   return max;
 };
 console.log(maxProfit([45, 24, 35, 31, 40, 38, 11]));
-module.exports = { maxProfit, checkIfIsArray, sortPrices };
+module.exports = { maxProfit, checkIfIsArray, sortPrices, findDiff };

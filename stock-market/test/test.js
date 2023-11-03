@@ -29,6 +29,19 @@ describe("sortPrices", () => {
   });
 });
 
+describe("findDiff", () => {
+  it("should return a positive number when n1 > n2", () => {
+    const expected = 3;
+    const actual = stock.findDiff(5, 2);
+    assert.strictEqual(actual, expected);
+  });
+  it("should return a negative number when n1 < n2", () => {
+    const expected = -1;
+    const actual = stock.findDiff(2, 3);
+    assert.strictEqual(actual, expected);
+  });
+});
+
 describe("maxProfit", () => {
   it("should return the maximum profit made by buying at a given price then selling later on", () => {
     const expected = 16;
