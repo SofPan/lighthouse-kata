@@ -45,8 +45,9 @@ const bottles = {
   },
   bottleCounter: function (fullBottles, emptyBottles, bottleCaps) {
     let empties = emptyBottles ? fullBottles + emptyBottles : fullBottles;
+    let caps = bottleCaps ? fullBottles + bottleCaps : fullBottles;
 
-    console.log(empties);
+    console.log(empties, caps);
   }
 };
 
