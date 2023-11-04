@@ -32,8 +32,13 @@ const bottles = {
     leftoverCaps: 0
   },
   totalBottles: function (purchased) {
-    return purchased;
+    // Each bottle of pop costs $2
+    this.result.purchased = this.divideBy(purchased, 2);
+    console.log(this.result);
   },
+  divideBy: (n1, n2) => {
+    return n1 / n2;
+  }
 };
 
 console.log(bottles.totalBottles(10)); // 15
