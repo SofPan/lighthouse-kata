@@ -48,8 +48,9 @@ const bottles = {
     let caps = bottleCaps ? fullBottles + bottleCaps : fullBottles;
     let redeemEmpties = this.roundDown(this.divideBy(empties, 2));
     let redeemCaps = this.roundDown(this.divideBy(caps, 4));
+    let redeemedBottles = redeemEmpties + redeemCaps;
 
-    console.log(redeemEmpties, redeemCaps);
+    console.log(redeemedBottles);
   }
 };
 
