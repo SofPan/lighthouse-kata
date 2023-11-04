@@ -35,7 +35,7 @@ const bottles = {
     // Each bottle of pop costs $2
     this.result.purchased = this.divideBy(purchased, 2);
     const bottlesPurchased = this.result.purchased;
-    this.bottleCounter(bottlesPurchased);
+    return this.bottleCounter(bottlesPurchased);
   },
   divideBy: (n1, n2) => {
     return n1 / n2;
@@ -44,13 +44,15 @@ const bottles = {
     return Math.floor(num);
   },
   bottleCounter: function (fullBottles, emptyBottles, bottleCaps) {
+    if (fullBottles < 1 && emptyBottles < 2 && bottleCaps < 4) {
+      return 0;
+    }
     let empties = emptyBottles ? fullBottles + emptyBottles : fullBottles;
     let caps = bottleCaps ? fullBottles + bottleCaps : fullBottles;
     let redeemEmpties = this.roundDown(this.divideBy(empties, 2));
     let redeemCaps = this.roundDown(this.divideBy(caps, 4));
     let redeemedBottles = redeemEmpties + redeemCaps;
 
-    console.log(redeemedBottles);
   }
 };
 
