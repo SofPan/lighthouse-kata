@@ -22,11 +22,23 @@
   }
 */
 
-const totalBottles = (investment) => {
-  const purchased = investment / 2;
+const bottles = {
+  result: {
+    purchased: 0,
+    fromRecycledBottles: 0,
+    fromRecycledCaps: 0,
+    maxTotalBottles: 0,
+    leftoverBottles: 0,
+    leftoverCaps: 0
+  },
+  totalBottles: function (purchased) {
+    return purchased;
+  },
 };
 
-console.log(totalBottles(10)); // 15
+console.log(bottles.totalBottles(10)); // 15
 // console.log(totalBottles(20)); // 35
 // console.log(totalBottles(30)); // 55
 // console.log(totalBottles(40)); // 75
+
+module.exports = { bottles };
