@@ -46,8 +46,10 @@ const bottles = {
   bottleCounter: function (fullBottles, emptyBottles, bottleCaps) {
     let empties = emptyBottles ? fullBottles + emptyBottles : fullBottles;
     let caps = bottleCaps ? fullBottles + bottleCaps : fullBottles;
+    let redeemEmpties = this.roundDown(this.divideBy(empties, 2));
+    let redeemCaps = this.roundDown(this.divideBy(caps, 4));
 
-    console.log(empties, caps);
+    console.log(redeemEmpties, redeemCaps);
   }
 };
 
