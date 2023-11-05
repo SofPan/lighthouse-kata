@@ -33,12 +33,11 @@ const bottles = {
   },
   totalBottles: function (purchased) {
     // Each bottle of pop costs $2
-    // this.result.purchased = this.divideBy(purchased, 2);
     let fullBottles = 0;
-    let empties = purchased / 2;
-    let caps = purchased / 2;
-    this.result.purchased = purchased / 2;
-    this.result.maxTotalBottles = purchased / 2;
+    let empties = this.divideBy(purchased, 2);
+    let caps = this.divideBy(purchased, 2);
+    this.result.purchased = this.divideBy(purchased, 2);
+    this.result.maxTotalBottles = this.divideBy(purchased, 2);
     return this.result.maxTotalBottles += this.countBottles(fullBottles, empties, caps);
   },
   divideBy: (n1, n2) => {
@@ -57,6 +56,8 @@ const bottles = {
   },
   countBottles: function (full, empty, caps) {
     if (full === 0 && empty < 2 && caps < 4) {
+      this.result.leftoverBottles = empty;
+      this.result.leftoverCaps = caps;
       return 0;
     }
     let totalRedeemed = 0;
@@ -65,7 +66,8 @@ const bottles = {
     full = 0;
     const recycleBottles = this.recycleBottleParts(empty, 2);
     const recycleCaps = this.recycleBottleParts(caps, 4);
-
+    this.result.fromRecycledBottles += recycleBottles[0];
+    this.result.fromRecycledCaps += recycleCaps[0];
     full = recycleBottles[0] + recycleCaps[0];
     empty = recycleBottles[1];
     caps = recycleCaps[1];
@@ -74,11 +76,14 @@ const bottles = {
   },
 };
 
-console.log(bottles.totalBottles(10)); // 15
-console.log(bottles.result);
 
-// console.log(totalBottles(20)); // 35
-// console.log(totalBottles(30)); // 55
-// console.log(totalBottles(40)); // 75
+bottles.totalBottles(10); // 15
+console.log(bottles.result);
+bottles.totalBottles(20); // 35
+console.log(bottles.result);
+bottles.totalBottles(30); // 55
+console.log(bottles.result);
+bottles.totalBottles(40); // 75
+console.log(bottles.result);
 
 module.exports = { bottles };
