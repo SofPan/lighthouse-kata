@@ -22,6 +22,8 @@
   }
 */
 
+const userInput = process.argv.slice(2);
+
 const bottles = {
   result: {
     purchased: 0,
@@ -32,7 +34,6 @@ const bottles = {
     leftoverCaps: 0
   },
   totalBottles: function (purchased) {
-    // Each bottle of pop costs $2
     let fullBottles = 0;
     let empties = this.divideBy(purchased, 2);
     let caps = this.divideBy(purchased, 2);
@@ -77,13 +78,11 @@ const bottles = {
 };
 
 
-bottles.totalBottles(10); // 15
-console.log(bottles.result);
-bottles.totalBottles(20); // 35
-console.log(bottles.result);
-bottles.totalBottles(30); // 55
-console.log(bottles.result);
-bottles.totalBottles(40); // 75
+// bottles.totalBottles(10); // 15
+// bottles.totalBottles(20); // 35
+// bottles.totalBottles(30); // 55
+// bottles.totalBottles(40); // 75
+bottles.totalBottles(userInput);
 console.log(bottles.result);
 
 module.exports = { bottles };
