@@ -35,7 +35,7 @@ const bottles = {
     // Each bottle of pop costs $2
     this.result.purchased = this.divideBy(purchased, 2);
     const bottlesPurchased = this.result.purchased;
-    return this.bottleCounter(bottlesPurchased);
+    return this.result.maxTotalBottles += this.bottleCounter(bottlesPurchased, 0, 0);
   },
   divideBy: (n1, n2) => {
     return n1 / n2;
@@ -44,19 +44,40 @@ const bottles = {
     return Math.floor(num);
   },
   bottleCounter: function (fullBottles, emptyBottles, bottleCaps) {
-    if (fullBottles < 1 && emptyBottles < 2 && bottleCaps < 4) {
-      return 0;
+    // if (fullBottles < 1 && emptyBottles < 2 && bottleCaps < 4) {
+    console.log(fullBottles, emptyBottles, bottleCaps);
+    if (emptyBottles < 2 && bottleCaps < 4 && fullBottles < 1) {
+      return "base case";
     }
-    let empties = emptyBottles ? fullBottles + emptyBottles : fullBottles;
-    let caps = bottleCaps ? fullBottles + bottleCaps : fullBottles;
-    let redeemEmpties = this.roundDown(this.divideBy(empties, 2));
-    let redeemCaps = this.roundDown(this.divideBy(caps, 4));
-    let redeemedBottles = redeemEmpties + redeemCaps;
+    let empties = emptyBottles + fullBottles;
+    let caps = 9;
+    let redeemEmpties = (empties - (empties % 2)) / 2;
+    let redeemCaps = caps % 4;
 
+    console.log(redeemEmpties, redeemCaps);
+    // let redeemedBottles = redeemEmpties + redeemCaps;
+
+    // empties = empties - redeemEmpties;
+    // caps = caps - redeemCaps;
+    // return redeemedBottles;
+    // return this.bottleCounter(redeemedBottles, empties, caps);
   }
 };
 
-console.log(bottles.totalBottles(10)); // 15
+const countBottles = (recycledItem, perEach) => {
+  let fullBottles = 0;
+  while (recycledItem > perEach) {
+    fullBottles += 1;
+    recycledItem -= perEach;
+  }
+  return [fullBottles, recycledItem];
+};
+
+let empties = 9;
+let each = 2;
+console.log(countBottles(empties, each));
+
+// console.log(bottles.totalBottles(10)); // 15
 // console.log(totalBottles(20)); // 35
 // console.log(totalBottles(30)); // 55
 // console.log(totalBottles(40)); // 75
