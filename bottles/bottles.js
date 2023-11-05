@@ -37,15 +37,21 @@ const bottles = {
     let fullBottles = 0;
     let empties = this.divideBy(purchased, 2);
     let caps = this.divideBy(purchased, 2);
-    this.result.purchased = this.divideBy(purchased, 2);
-    this.result.maxTotalBottles = this.divideBy(purchased, 2);
-    return this.result.maxTotalBottles += this.countBottles(fullBottles, empties, caps);
+    const res = this.result;
+    res.purchased = this.divideBy(purchased, 2);
+    res.maxTotalBottles = this.divideBy(purchased, 2);
+    res.maxTotalBottles += this.countBottles(fullBottles, empties, caps);
+    return `
+    TOTAL BOTTLES: ${res.maxTotalBottles}
+    REMAINING BOTTLES: ${res.leftoverBottles}
+    REMAINING CAPS: ${res.leftoverCaps}
+    TOTAL EARNED:
+      BOTTLES: ${res.fromRecycledBottles}
+      CAPS: ${res.fromRecycledCaps}
+    `;
   },
   divideBy: (n1, n2) => {
     return n1 / n2;
-  },
-  roundDown: (num) => {
-    return Math.floor(num);
   },
   recycleBottleParts: function (recycledItem, perEach) {
     let fullBottles = 0;
@@ -82,7 +88,6 @@ const bottles = {
 // bottles.totalBottles(20); // 35
 // bottles.totalBottles(30); // 55
 // bottles.totalBottles(40); // 75
-bottles.totalBottles(userInput);
-console.log(bottles.result);
+console.log(bottles.totalBottles(userInput));
 
 module.exports = { bottles };
