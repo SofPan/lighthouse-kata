@@ -34,7 +34,16 @@ const bottles = {
   totalBottles: function (purchased) {
     // Each bottle of pop costs $2
     // this.result.purchased = this.divideBy(purchased, 2);
-    let fullBottles = purchased;
+    let fullBottles = 0;
+    let empties = purchased / 2;
+    let caps = purchased / 2;
+
+    const recycleBottles = this.countBottles(empties, 2);
+    const recycleCaps = this.countBottles(caps, 4);
+    fullBottles += recycleBottles[0] + recycleCaps[0];
+    empties += recycleBottles[1];
+    caps += recycleCaps[1];
+    console.log(fullBottles, empties, caps);
   },
   divideBy: (n1, n2) => {
     return n1 / n2;
@@ -52,7 +61,7 @@ const bottles = {
   },
 };
 
-// console.log(bottles.totalBottles(10)); // 15
+console.log(bottles.totalBottles(10)); // 15
 // console.log(totalBottles(20)); // 35
 // console.log(totalBottles(30)); // 55
 // console.log(totalBottles(40)); // 75
