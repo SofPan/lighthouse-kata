@@ -37,13 +37,9 @@ const bottles = {
     let fullBottles = 0;
     let empties = purchased / 2;
     let caps = purchased / 2;
-
-    const recycleBottles = this.countBottles(empties, 2);
-    const recycleCaps = this.countBottles(caps, 4);
-    fullBottles += recycleBottles[0] + recycleCaps[0];
-    empties += recycleBottles[1];
-    caps += recycleCaps[1];
-    console.log(fullBottles, empties, caps);
+    this.result.purchased = purchased / 2;
+    this.result.maxTotalBottles = purchased / 2;
+    return this.result.maxTotalBottles += this.countBottles(fullBottles, empties, caps);
   },
   divideBy: (n1, n2) => {
     return n1 / n2;
@@ -51,17 +47,36 @@ const bottles = {
   roundDown: (num) => {
     return Math.floor(num);
   },
-  countBottles: function (recycledItem, perEach) {
+  recycleBottleParts: function (recycledItem, perEach) {
     let fullBottles = 0;
-    while (recycledItem > perEach) {
+    while (recycledItem >= perEach) {
       fullBottles += 1;
       recycledItem -= perEach;
     }
     return [fullBottles, recycledItem];
   },
+  countBottles: function (full, empty, caps) {
+    if (full === 0 && empty < 2 && caps < 4) {
+      return 0;
+    }
+    let totalRedeemed = 0;
+    empty = empty + full;
+    caps = caps + full;
+    full = 0;
+    const recycleBottles = this.recycleBottleParts(empty, 2);
+    const recycleCaps = this.recycleBottleParts(caps, 4);
+
+    full = recycleBottles[0] + recycleCaps[0];
+    empty = recycleBottles[1];
+    caps = recycleCaps[1];
+    totalRedeemed = full;
+    return totalRedeemed += this.countBottles(full, empty, caps);
+  },
 };
 
 console.log(bottles.totalBottles(10)); // 15
+console.log(bottles.result);
+
 // console.log(totalBottles(20)); // 35
 // console.log(totalBottles(30)); // 55
 // console.log(totalBottles(40)); // 75
