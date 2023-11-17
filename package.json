@@ -5,5 +5,15 @@
   "devDependencies": {
     "chai": "^4.3.10",
     "mocha": "^9.2.2"
-  }
+  },
+  "name": "lighthouse-kata",
+  "description": "Lighthouse Labs Kata exercises",
+  "version": "1.0.0",
+  "main": "bake-off.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
